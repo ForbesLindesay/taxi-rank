@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Linked Page</title></head>
+<body>
+<div id="typeKeyPress"></div>
+<div id="typeKeyUp"></div>
+<div id="typeKeyDown"></div>
+<div id="areaToType">Here we are!</div>
+<script>
+    document.body.addEventListener('keypress', function (e) {
+        document.getElementById('typeKeyPress').textContent = 'KeyPress:' + e.charCode;
+    });
+    document.body.addEventListener('keyup', function (e) {
+        document.getElementById('typeKeyUp').textContent = 'KeyUp:' + e.keyCode;
+    });
+    document.body.addEventListener('keydown', function (e) {
+        document.getElementById('typeKeyDown').textContent = 'KeyDown:' + e.keyCode;
+    });
+</script>
+</body>
+</html>

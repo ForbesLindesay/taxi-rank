@@ -1,0 +1,49 @@
+{
+  "name": "taxi-rank",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "description": "A JSDom based Selenium Webdriver API",
+  "keywords": [],
+  "files": [
+    "cli.js",
+    "lib/"
+  ],
+  "bin": {
+    "taxi-rank": "./cli.js"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.18.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "throat": "^3.0.0",
+    "uuid": "^3.0.1",
+    "zombie": "^5.0.5"
+  },
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-jest": "*",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-forbeslindesay": "*",
+    "cabbie-sync": "^0.5.3",
+    "cross-spawn": "^5.1.0",
+    "eslint": "*",
+    "eslint-config-forbeslindesay": "*",
+    "jest": "*",
+    "sync-request": "^4.0.3"
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "babel src --out-dir lib",
+    "lint": "eslint src",
+    "test": "babel-node test && npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ForbesLindesay/taxi-rank.git"
+  },
+  "author": {
+    "name": "Forbes Lindesay",
+    "url": "http://github.com/ForbesLindesay"
+  },
+  "license": "MIT"
+}

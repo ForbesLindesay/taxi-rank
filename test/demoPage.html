@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Test Page</title></head>
+  <body>
+    <h1>Test Page</h1>
+    <div id="hidden" class="class-selectable" style="display: none;"></div>
+    <div id="has-attribute" data-attribute="value"></div>
+    <div id="has-text" class="class-selectable">test content</div>
+    <button id="clickable">Click Me!</button>
+    <button id="alert_button">Alert Me!</button>
+    <button id="confirm_button">Confirm Me!</button>
+    <button id="prompt_button">Prompt Me!</button>
+    <button id="open_window_button">Open Window</button>
+    <form id="formToSubmit" method="GET">
+        <label>Input: <input id="inputField" name="q" value="1357" class="hasThisClass andAnotherClass" /></label>
+        <label><input type="checkbox" id="firstCheckBox" checked /> First Checkbox</label>
+        <label><input type="checkbox" id="secondCheckBox" /> Second Checkbox</label>
+        <label><input type="checkbox" id="thirdCheckBox" disabled /> Third Checkbox</label>
+    </form>
+    <a href="{{linked-page}}" id="linkToClick">Click this link to go to another page!</a>
+    <div id="areaToClick" style="position:absolute; background-color: red; width: 500px; height: 50px; left: 200px; top: 50px;">Nothing yet!</div>
+    <div id="container" class="containerClass">
+        <div id="sub-element">Sub-Element</div>
+        <div class="someSubElement">Some Sub-Element</div>
+    </div>
+    <script>
+        document.getElementById('areaToClick').addEventListener('click', function (e) {
+            var button = "unknown";
+            if (e.button == 0) {
+                button = "left";
+            } else if (e.button == 1) {
+                button = "middle";
+            }
+            document.getElementById('areaToClick').textContent = 'clicked ' + button + ' at ' + e.clientX + 'x' + e.clientY;
+        });
+        document.getElementById('areaToClick').addEventListener('contextmenu', function (e) {
+            document.getElementById('areaToClick').textContent = 'clicked right';
+        });
+        document.getElementById('areaToClick').addEventListener('dblclick', function (e) {
+            var button = "unknown";
+            if (e.button == 0) {
+                button = "left";
+            } else if (e.button == 1) {
+                button = "middle";
+            }
+            document.getElementById('areaToClick').textContent = 'double clicked ' + button + ' at ' + e.clientX + 'x' + e.clientY;
+        });
+        document.getElementById('clickable').addEventListener('click', function () {
+            document.getElementById('clickable').textContent = 'clicked';
+        });
+        document.getElementById('alert_button').addEventListener('click', function () {
+            alert('This is a test alert!');
+            document.getElementById('alert_button').textContent = 'alerted';
+        });
+        document.getElementById('confirm_button').addEventListener('click', function () {
+            var result = confirm("Test confirmation");
+            if (result) {
+              document.getElementById('confirm_button').textContent = 'confirmed';
+            } else {
+              document.getElementById('confirm_button').textContent = 'denied';
+            }
+        });
+        document.getElementById('prompt_button').addEventListener('click', function () {
+            var result = prompt("Test Prompt:", "default value");
+            document.getElementById('prompt_button').textContent = 'prompted: ' + result;
+        });
+        document.getElementById('open_window_button').addEventListener('click', function () {
+          window.open('http://www.yahoo.com');
+        });
+    </script>
+  </body>
+</html>
