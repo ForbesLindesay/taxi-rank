@@ -1,21 +1,7 @@
-import {fork} from 'child_process';
 import express from 'express';
 import uuid from 'uuid/v1';
 import {json} from 'body-parser';
-import throat from 'throat';
-
-class Session {
-  constructor() {
-    this._process = fork(__dirname + '/browser-process.js');
-    this.handle = throat(1, message => new Promise((resolve) => {
-      this._process.once('message', resolve);
-      this._process.send(message);
-    }));
-  }
-  dispose() {
-    this._process.kill();
-  }
-}
+import browser from './browser-api';
 
 module.exports = function (options = {}) {
   const app = express();
@@ -25,7 +11,7 @@ module.exports = function (options = {}) {
 
   app.post('/session', (req, res, next) => {
     const sessionId = options.uuid ? options.uuid() : uuid();
-    const currentSession = new Session(options);
+    const currentSession = browser();
     activeSessions.set(sessionId, currentSession);
     // TODO: initialise lots of things from capabilities here
     const capabilities = {};
