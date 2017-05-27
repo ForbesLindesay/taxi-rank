@@ -10,7 +10,9 @@ function throwError(status, message) {
   throw err;
 }
 
-const timeouts = {};
+const timeouts = {
+  implicit: 5000,
+};
 
 const elements = new Map();
 
@@ -43,8 +45,13 @@ const driver = {
     return browser.url;
   },
 
-  getElement({body: {using, value}}) {
-    const element = this.getElements({body: {using, value}})[0];
+  async getElement({body: {using, value}}) {
+    const timeout = Date.now() + timeouts.implicit;
+    let element = this.getElements({body: {using, value}})[0];
+    while (!element && Date.now() < timeout) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+      element = this.getElements({body: {using, value}})[0];
+    }
     if (!element) {
       throwError(7, 'No element found');
     }
@@ -191,8 +198,13 @@ const elementMethods = {
     await browser.fire(element, 'submit');
   },
 
-  getElement(parentElement, {body: {using, value}}) {
-    const element = this.getElements(parentElement, {body: {using, value}})[0];
+  async getElement(parentElement, {body: {using, value}}) {
+    const timeout = Date.now() + timeouts.implicit;
+    let element = this.getElements(parentElement, {body: {using, value}})[0];
+    while (!element && Date.now() < timeout) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+      element = this.getElements(parentElement, {body: {using, value}})[0];
+    }
     if (!element) {
       throwError(7, 'No element found');
     }
