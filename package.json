@@ -1,6 +1,6 @@
 {
   "name": "taxi-rank",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "description": "A JSDom based Selenium Webdriver API",
   "keywords": [],
