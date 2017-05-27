@@ -3,7 +3,7 @@
 const startServer = require('./lib');
 
 const argv = require('minimist')(process.argv.slice(2));
-const port = argv.p || argv.port;
+const port = argv.p || argv.port || 9516;
 
 if (argv.help || argv.h) {
   console.log('Usage:');
