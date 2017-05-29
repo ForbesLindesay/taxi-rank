@@ -14,7 +14,7 @@ npm install taxi-rank -g
 
 ## Usage
 
-In a separate terminal, run `taxi-rank`, then you can use cabbie (or your webdriver client of choice), to connect to this supper-fast virtual driver:
+In a separate terminal, run `taxi-rank`, then you can use cabbie (or your webdriver client of choice), to connect to this super-fast virtual driver:
 
 ```js
 import assert from 'assert';
