@@ -25,7 +25,7 @@ const driver = cabbie('http://localhost:9516', {debug: true});
 
 try {
   // navigate to a url in the currently active window
-  driver.browser.activeWindow.navigator.navigateTo('http://example.com');
+  driver.browser.activeWindow.navigateTo('http://example.com');
 
   // get an element, and check that its text equals some expected value
   assert.equal(
