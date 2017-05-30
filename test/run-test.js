@@ -1,7 +1,7 @@
 // @flow
 
 import type { Driver } from 'cabbie-sync';
-import { getSessions, getStatus, MouseButtons, SelectorTypes, Cookie } from 'cabbie-sync';
+import { SelectorTypes } from 'cabbie-sync';
 import chalk from 'chalk';
 import assert from 'assert';
 
@@ -29,11 +29,11 @@ function run(driver: Driver, location: string) {
   });
 
   test('navigate to a domain', () => {
-    driver.browser.activeWindow.navigator.navigateTo(location);
+    driver.browser.activeWindow.navigateTo(location);
   });
 
   test('get the url of the active window', () => {
-    assert.equal(driver.browser.activeWindow.navigator.getUrl(), location);
+    assert.equal(driver.browser.activeWindow.getUrl(), location);
   });
 
   test('select a single element', () => {
@@ -113,7 +113,7 @@ function run(driver: Driver, location: string) {
   test('submit a form', () => {
     const formToSubmit = driver.browser.activeWindow.getElement('#formToSubmit');
     formToSubmit.submit();
-    const url = driver.browser.activeWindow.navigator.getUrl();
+    const url = driver.browser.activeWindow.getUrl();
     assert.equal(url.substr(-7), '?q=1357');
   });
 
@@ -276,16 +276,16 @@ function run(driver: Driver, location: string) {
   });
 
   test('go backward', () => {
-    driver.browser.activeWindow.navigator.backward();
+    driver.browser.activeWindow.goBackward();
   });
 
   test('go forward', () => {
-    driver.browser.activeWindow.navigator.forward();
-    driver.browser.activeWindow.navigator.backward();
+    driver.browser.activeWindow.goForward();
+    driver.browser.activeWindow.goBackward();
   });
 
   test('refresh', () => {
-    driver.browser.activeWindow.navigator.refresh();
+    driver.browser.activeWindow.refresh();
   });
 
   // test('accept an alert', () => {
@@ -370,67 +370,27 @@ function run(driver: Driver, location: string) {
   //   assert(buffer instanceof Buffer);
   // });
 
-  test('create a cookie object', () => {
-    const cookie = new Cookie();
-
-    cookie.setName('testKey');
-    cookie.setValue('2468');
-
-    assert.equal(cookie.getName(), 'testKey');
-    assert.equal(cookie.getValue(), '2468');
-
-    assert.equal(cookie.getDomain(), undefined);
-    cookie.setDomain('www.google.com');
-    assert.equal(cookie.getDomain(), 'www.google.com');
-
-    assert.equal(cookie.getPath(), '/');
-    cookie.setPath('/test');
-    assert.equal(cookie.getPath(), '/test');
-
-    assert.equal(cookie.isSecure(), undefined);
-    cookie.setSecure(true);
-    assert.equal(cookie.isSecure(), true);
-
-    assert.equal(cookie.isHttpOnly(), undefined);
-    cookie.setHttpOnly(false);
-    assert.equal(cookie.isHttpOnly(), false);
-
-    assert.equal(cookie.getExpiry(), undefined);
-    cookie.setExpiry(500);
-    assert.equal(cookie.getExpiry(), 500);
-
-    assert.deepEqual(cookie.toObject(), {
-      path: '/test',
+  test('set a value in cookie-storage', async () => {
+    const cookie1 = {
       name: 'testKey',
       value: '2468',
-      domain: 'www.google.com',
-      secure: true,
-      httpOnly: false,
-      expiry: 500
-    });
-  });
-
-  test('set a value in cookie-storage', () => {
-    const cookie1 = new Cookie();
-    const cookie2 = new Cookie();
-
-    cookie1.setName('testKey');
-    cookie1.setValue('2468');
-
-    cookie2.setName('testKeySecond');
-    cookie2.setValue('hello');
+    };
+    const cookie2 = {
+      name: 'testKeySecond',
+      value: 'hello',
+    };
 
     driver.browser.cookieStorage.setCookie(cookie1);
     driver.browser.cookieStorage.setCookie(cookie2);
   });
 
-  test('get a value in cookie-storage', () => {
+  test('get a value in cookie-storage', async () => {
     const cookie = driver.browser.cookieStorage.getCookie('testKey');
     if (!cookie) {
       throw new Error('Cookie should not be undefined');
     }
-    assert.equal(cookie.getName(), 'testKey');
-    assert.equal(cookie.getValue(), '2468');
+    assert.equal(cookie.name, 'testKey');
+    assert.equal(cookie.value, '2468');
   });
 
   test('get the size of cookie-storage', () => {
