@@ -1,7 +1,5 @@
 # taxi-rank
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/ForbesLindesay/taxi-rank.svg)](https://greenkeeper.io/)
-
 A super fast JSDom based Selenium Webdriver API. Write end to end tests once and run them against this super fast, headless browser built on node.js, then once those tests pass you can run them against real browsers in the cloud!
 
 [![Build Status](https://img.shields.io/travis/ForbesLindesay/taxi-rank/master.svg)](https://travis-ci.org/ForbesLindesay/taxi-rank)
