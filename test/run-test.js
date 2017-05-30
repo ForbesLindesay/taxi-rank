@@ -370,7 +370,7 @@ function run(driver: Driver, location: string) {
   //   assert(buffer instanceof Buffer);
   // });
 
-  test('set a value in cookie-storage', async () => {
+  test('set a value in cookie-storage', () => {
     const cookie1 = {
       name: 'testKey',
       value: '2468',
@@ -384,7 +384,7 @@ function run(driver: Driver, location: string) {
     driver.browser.cookieStorage.setCookie(cookie2);
   });
 
-  test('get a value in cookie-storage', async () => {
+  test('get a value in cookie-storage', () => {
     const cookie = driver.browser.cookieStorage.getCookie('testKey');
     if (!cookie) {
       throw new Error('Cookie should not be undefined');
