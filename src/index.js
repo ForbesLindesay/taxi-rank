@@ -98,7 +98,7 @@ module.exports = function (options = {}) {
   app.post('/session/:sessionId/element/:elementId/value', elementMethod('appendValue'));
 
   app.use((req, res, next) => {
-    res.json({status: 9, value: {message: `Unkown method: ${req.method} ${req.path}`}});
+    res.json({status: 9, value: {message: `Unknown method: ${req.method} ${req.path}`}});
   });
 
   return app.listen(options.port || 9516, options.onStart);
