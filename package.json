@@ -27,7 +27,7 @@
     "babel-preset-forbeslindesay": "*",
     "cabbie-sync": "^0.6.0",
     "cross-spawn": "^5.1.0",
-    "eslint": "*",
+    "eslint": ">=4.0.0",
     "eslint-config-forbeslindesay": "*",
     "jest": "*",
     "sync-request": "^4.0.3"
