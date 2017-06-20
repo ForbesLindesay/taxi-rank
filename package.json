@@ -16,7 +16,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "minimist": "^1.2.0",
-    "throat": "^3.0.0",
+    "throat": "^4.0.0",
     "uuid": "^3.0.1",
     "zombie": "^5.0.5"
   },
