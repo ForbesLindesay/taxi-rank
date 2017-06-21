@@ -110,6 +110,15 @@ function run(driver: Driver, location: string) {
     assert(!secondCheckBox.isSelected());
   });
 
+  test('clicking a checkbox toggles it', () => {
+    const firstCheckBox = driver.browser.activeWindow.getElement('#firstCheckBox');
+    assert(firstCheckBox.isSelected(), 'first box stars selected');
+    firstCheckBox.mouse.click();
+    assert(!firstCheckBox.isSelected(), 'first box becomes unselected');
+    firstCheckBox.mouse.click();
+    assert(firstCheckBox.isSelected(), 'first box is back to selected');
+  });
+
   test('submit a form', () => {
     const formToSubmit = driver.browser.activeWindow.getElement('#formToSubmit');
     formToSubmit.submit();

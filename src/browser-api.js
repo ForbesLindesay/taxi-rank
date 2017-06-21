@@ -172,7 +172,19 @@ module.exports = function () {
 
   const elementMethods = {
     async click(element) {
-      await browser.click(element);
+      // workaround for https://github.com/assaf/zombie/issues/1124
+      if (
+        element.tagName.toLowerCase() === 'input' &&
+        element.getAttribute('type').toLowerCase() === 'checkbox'
+      ) {
+        if (element.checked) {
+          await browser.uncheck(element);
+        } else {
+          await browser.check(element);
+        }
+      } else {
+        await browser.click(element);
+      }
     },
     getAttribute(element, {params: {attributeName}}) {
       if (attributeName === 'value') {
@@ -185,10 +197,10 @@ module.exports = function () {
       return browser.window.getComputedStyle(element)[propertyName];
     },
     getEnabled(element) {
-      return !element.hasAttribute('disabled');
+      return !element.disabled;
     },
     getSelected(element) {
-      return element.hasAttribute('checked');
+      return element.checked;
     },
     getTagName(element) {
       return element.tagName.toLowerCase();
