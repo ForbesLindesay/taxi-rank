@@ -18,7 +18,7 @@
     "minimist": "^1.2.0",
     "throat": "^3.0.0",
     "uuid": "^3.0.1",
-    "zombie": "^5.0.5"
+    "@forbeslindesay/zombie": "^5.0.5"
   },
   "devDependencies": {
     "babel-cli": "*",
@@ -27,6 +27,7 @@
     "babel-preset-forbeslindesay": "*",
     "cabbie-sync": "^0.6.0",
     "cross-spawn": "^5.1.0",
+    "escope": "^3.6.0",
     "eslint": "*",
     "eslint-config-forbeslindesay": "*",
     "jest": "*",

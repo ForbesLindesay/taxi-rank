@@ -1,4 +1,4 @@
-import Browser from 'zombie';
+import Browser from '@forbeslindesay/zombie';
 import uuid from 'uuid';
 import throat from 'throat';
 
