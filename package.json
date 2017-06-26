@@ -18,7 +18,7 @@
     "minimist": "^1.2.0",
     "throat": "^3.0.0",
     "uuid": "^3.0.1",
-    "zombie": "^5.0.6"
+    "zombie": "^5.0.7"
   },
   "devDependencies": {
     "babel-cli": "*",
