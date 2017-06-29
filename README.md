@@ -21,7 +21,7 @@ import assert from 'assert';
 import cabbie from 'cabbie-sync';
 
 // connect to taxi-rank, adding {debug: true} makes cabbie log each method call.
-const driver = cabbie('http://localhost:9516', {debug: true});
+const driver = cabbie('taxirank', {debug: true});
 
 try {
   // navigate to a url in the currently active window
@@ -37,6 +37,8 @@ try {
   driver.dispose();
 }
 ```
+
+You can find full API docs for cabbie at https://cabbiejs.org/api/ but you can use any webdriver client by simply telling it to conenct to `http://localhost:9516`
 
 ## License
 
