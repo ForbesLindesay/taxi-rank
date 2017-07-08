@@ -12,6 +12,10 @@ function startServer(options: WebdriverOptions = {}) {
 
   app.use(json());
   
+  app.get('/version', (req, res, next) => {
+    res.json(require('../package.json').version);
+  });
+
   function isStorageLevel(str: string): str is StorageLevel {
     return str === StorageLevel.Local || str === StorageLevel.Session;
   }
