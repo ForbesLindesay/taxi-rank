@@ -1,4 +1,4 @@
-import startServer from '../src';
+import startServer from '../lib';
 
 startServer({
   onStart() {
