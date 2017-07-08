@@ -1,7 +1,7 @@
 // @flow
 
 import type { Driver } from 'cabbie-sync';
-import { SelectorTypes } from 'cabbie-sync';
+import { SelectorTypes, MouseButtons } from 'cabbie-sync';
 import chalk from 'chalk';
 import assert from 'assert';
 
@@ -119,6 +119,12 @@ function run(driver: Driver, location: string) {
     assert(firstCheckBox.isSelected(), 'first box is back to selected');
   });
 
+  test('click on an element fires all the events', () => {
+    const mouseEvents = driver.browser.activeWindow.getElement('#mouseEvents');
+    mouseEvents.mouse.click();
+    assert.equal(mouseEvents.getText(), 'all events fired');
+  });
+
   test('submit a form', () => {
     const formToSubmit = driver.browser.activeWindow.getElement('#formToSubmit');
     formToSubmit.submit();
@@ -129,22 +135,21 @@ function run(driver: Driver, location: string) {
   test('click on an element', () => {
     const areaToClick = driver.browser.activeWindow.getElement('#areaToClick');
     areaToClick.mouse.click();
-    // assert.equal(areaToClick.getText(), 'clicked left at 450x75');
-    assert.equal(areaToClick.getText(), 'clicked unknown at undefinedxundefined');
+    assert.equal(areaToClick.getText(), 'clicked left at 450x75');
   });
 
-  // test('click on an element with right button', () => {
-  //   const areaToClick = driver.browser.activeWindow.getElement('#areaToClick');
-  //   areaToClick.mouse.click(MouseButtons.RIGHT);
-  //   assert.equal(areaToClick.getText(), 'clicked right');
-  // });
-  //
-  // // N.B. we do not test middle click, because it causes the build to fail on a mac
-  // test('click on an element at a specific place', () => {
-  //   const areaToClick = driver.browser.activeWindow.getElement('#areaToClick');
-  //   areaToClick.mouse.clickAt(14, 17);
-  //   assert.equal(areaToClick.getText(), 'clicked left at 214x67');
-  // });
+  test('click on an element with right button', () => {
+    const areaToClick = driver.browser.activeWindow.getElement('#areaToClick');
+    areaToClick.mouse.click(MouseButtons.RIGHT);
+    assert.equal(areaToClick.getText(), 'clicked right at 200x50');
+  });
+  
+  // N.B. we do not test middle click, because it causes the build to fail on a mac
+  test('click on an element at a specific place', () => {
+    const areaToClick = driver.browser.activeWindow.getElement('#areaToClick');
+    areaToClick.mouse.clickAt(14, 17);
+    assert.equal(areaToClick.getText(), 'clicked left at 214x67');
+  });
 
   // test('double-click on an element', () => {
   //   const areaToClick = driver.browser.activeWindow.getElement('#areaToClick');
