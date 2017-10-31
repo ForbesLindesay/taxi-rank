@@ -45,7 +45,7 @@
     "eslint-config-forbeslindesay": "*",
     "jest": "*",
     "sync-request": "^4.0.3",
-    "typescript": "^2.4.0"
+    "typescript": "2.5.3"
   },
   "scripts": {
     "prepublish": "npm run build",
