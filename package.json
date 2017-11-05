@@ -27,7 +27,7 @@
     "jsdom": "^11.0.0",
     "minimist": "^1.2.0",
     "node-storage-shim": "^1.0.1",
-    "parse5": "^3.0.2",
+    "parse5": "^3.0.3",
     "throat": "^4.0.0",
     "uuid": "^3.0.1",
     "webidl-conversions": "^4.0.1",
