@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "babel-cli": "*",
-    "babel-jest": "*",
+    "babel-jest": ">=22.0.4",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-forbeslindesay": "*",
     "cabbie-sync": "^0.10.1",
