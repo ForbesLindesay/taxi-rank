@@ -44,7 +44,7 @@
     "eslint": "*",
     "eslint-config-forbeslindesay": "*",
     "jest": "*",
-    "sync-request": "^5.0.0",
+    "sync-request": "^6.0.0",
     "typescript": "^2.4.0"
   },
   "scripts": {
