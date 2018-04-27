@@ -5,6 +5,7 @@ sudo: false
 node_js:
   - "6"
   - "7"
+  - "10"
 
 notifications:
   email:
