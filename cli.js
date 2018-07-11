@@ -17,4 +17,5 @@ startServer({
   onStart() {
     console.log('listening on http://localhost:' + port);
   },
+  port,
 });
