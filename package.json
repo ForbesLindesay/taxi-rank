@@ -41,7 +41,7 @@
     "cabbie-sync": "^0.10.1",
     "cross-spawn": "^6.0.0",
     "escope": "^3.6.0",
-    "eslint": "*",
+    "eslint": ">=6.5.1",
     "eslint-config-forbeslindesay": "*",
     "jest": "*",
     "sync-request": "^6.0.0",
