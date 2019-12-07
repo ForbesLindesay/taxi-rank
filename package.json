@@ -30,7 +30,7 @@
     "parse5": "^3.0.2",
     "throat": "^4.0.0",
     "uuid": "^3.0.1",
-    "webidl-conversions": "^4.0.1",
+    "webidl-conversions": "^5.0.0",
     "whatwg-url": "^6.2.0"
   },
   "devDependencies": {
